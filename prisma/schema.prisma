@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  project   String
+  ip        String?  // Indirizzo IP di chi ha inviato il messaggio
+  createdAt DateTime @default(now())
+}
+
+model Visitor {
+  id        Int      @id @default(autoincrement())
+  ip        String   // Indirizzo IP del visitatore
+  userAgent String?  // Browser/Dispositivo
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="it" class="bg-[#f0f2f5] selection:bg-indigo-500 selection:text-white scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Engineering Studio | Design & Digital Strategy</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Creative Engineering Studio - Freelance Creative Lead & Designer specializzato in esperienze digitali ad alte prestazioni. Trasformo visioni in interfacce che convertono.">
+    <meta name="keywords" content="Web Design, Web Development, UI/UX, Strategy, Freelance, Milano, Digital Experiences">
+    <meta name="author" content="Creative Studio">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Creative Engineering Studio | Digital Craft">
+    <meta property="og:description" content="Trasformo il codice in movimento puro. Scopri il mio portfolio.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&h=630&fit=crop">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#4f46e5',
+                        brandLight: '#818cf8',
+                        accent: '#ec4899',
+                        dark: '#0f172a',
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                        serif: ['"Instrument Serif"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #0f172a;
+            overflow-x: hidden;
+            background-color: #f0f2f5;
+        }
+
+        /* Luminous Liquid Background */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #f0f2f5 0%, #e2e8f0 100%);
+            overflow: hidden;
+        }
+
+        .mesh-sphere {
+            position: absolute;
+            filter: blur(120px);
+            border-radius: 50%;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Grain Texture Overlay */
+        .grain-overlay::before {
+            content: "";
+            position: fixed;
+            top: -150%;
+            left: -150%;
+            width: 300%;
+            height: 300%;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 9999;
+            animation: grain-animation 8s steps(10) infinite;
+        }
+
+        @keyframes grain-animation {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-out, background 0.3s ease, border-color 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.6);
+            border-color: #4f46e5;
+            box-shadow: 0 40px 80px rgba(79, 70, 229, 0.15);
+        }
+
+        .card-content {
+            transform: translateZ(50px);
+        }
+
+        /* Floating Images with Mask */
+        .floating-img {
+            border-radius: 3rem;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        /* Image Clash Section */
+        .clash-container {
+            position: relative;
+            height: 150vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .clash-img {
+            position: absolute;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.15);
+            will-change: transform;
+        }
+
+        /* Typography Reveal */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* Section Title with Motion */
+        .section-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(15, 23, 42, 0.1);
+            color: transparent;
+        }
+
+        @keyframes marquee-text {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee-text {
+            display: inline-block;
+            animation: marquee-text 40s linear infinite;
+        }
+
+        .testimonial-bubble {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid white;
+            padding: 2rem;
+            border-radius: 2rem;
+            position: relative;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 64px;
+            height: 64px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+            z-index: 9999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .whatsapp-fixed:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-fixed::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #25D366;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="grain-overlay">
+    <!-- Fixed Elements -->
+    <a href="https://wa.me/393456789012" target="_blank" class="whatsapp-fixed group" id="whatsapp-btn" aria-label="Chat su WhatsApp">
+        <svg viewBox="0 0 24 24" class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="absolute right-20 bg-white text-dark px-4 py-2 rounded-xl text-xs font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-all pointer-events-none whitespace-nowrap border border-dark/5">
+            Hai una domanda? <span class="text-brand">Chatta ora</span>
+        </span>
+    </a>
+
+    <!-- Liquid Background System -->
+    <div class="liquid-bg">
+        <div class="mesh-sphere w-[800px] h-[800px] bg-indigo-300 top-[-20%] left-[-10%]" id="mesh-1"></div>
+        <div class="mesh-sphere w-[700px] h-[700px] bg-purple-200 bottom-[-10%] right-[-5%]" id="mesh-2"></div>
+        <div class="mesh-sphere w-[600px] h-[600px] bg-cyan-200 top-[30%] left-[40%]" id="mesh-3"></div>
+        <div class="mesh-sphere w-[500px] h-[500px] bg-pink-200 bottom-[20%] left-[10%]" id="mesh-4"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 py-8 px-8 md:px-16 flex justify-between items-center transition-all duration-500" id="main-header">
+        <a href="#" class="text-2xl font-display font-extrabold tracking-tighter group">
+            <span class="group-hover:text-brand transition-colors duration-300">STUDIO</span><span class="text-brand group-hover:text-dark transition-colors duration-300">.</span><span class="font-serif italic font-normal text-dark/80 group-hover:text-brand transition-colors duration-300">CREATIVE</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-12 bg-white/40 backdrop-blur-xl px-10 py-4 rounded-full border border-white/50 shadow-sm">
+            <a href="#" class="text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors">Home</a>
+            <a href="#progetti" class="text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors">Progetti</a>
+            <a href="#servizi" class="text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors">Servizi</a>
+            <a href="#metodo" class="text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors">Metodo</a>
+            <a href="#contatti" class="text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors">Contatti</a>
+        </nav>
+        <div class="flex items-center gap-6">
+            <a href="#contatti" class="bg-dark text-white px-8 py-3 rounded-full text-xs font-bold hover:bg-brand transition-all shadow-lg hover:shadow-brand/20">
+                START PROJECT
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center relative px-8 md:px-20 pt-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full relative z-10">
+                <div class="reveal-up mb-10">
+                    <span class="inline-block py-2 px-4 bg-brand/10 text-brand rounded-full text-[10px] font-extrabold tracking-[0.3em] uppercase border border-brand/20">
+                        Design & Strategy Freelance Studio
+                    </span>
+                </div>
+                
+                <h1 class="section-title font-display font-extrabold tracking-tighter mb-12 reveal-up">
+                    <span class="block">CREO</span>
+                    <span class="block italic font-serif text-brand">Esperienze</span>
+                    <span class="block">CHE <span class="text-dark/20">RESPIRANO.</span></span>
+                </h1>
+
+                <div class="grid md:grid-cols-12 gap-10 items-end reveal-up" style="transition-delay: 0.2s">
+                    <div class="md:col-span-7">
+                        <p class="text-2xl md:text-3xl text-dark/60 font-light leading-snug max-w-2xl">
+                            Specializzati nella <span class="text-dark font-semibold">progettazione di prodotti digitali</span> ad alto impatto. Fondiamo ingegneria del software e design d'avanguardia per creare soluzioni che scalano, convertono e lasciano il segno nel panorama digitale contemporaneo.
+                        </p>
+                    </div>
+                    <div class="md:col-span-5 flex md:justify-end">
+                        <div class="flex items-center gap-4 group cursor-pointer" onclick="document.querySelector('#progetti').scrollIntoView({behavior: 'smooth'})">
+                            <div class="w-16 h-16 rounded-full border-2 border-brand flex items-center justify-center group-hover:bg-brand transition-all duration-500">
+                                <i data-lucide="arrow-down" class="text-brand group-hover:text-white transition-colors"></i>
+                            </div>
+                            <span class="text-sm font-bold tracking-widest uppercase opacity-40 group-hover:opacity-100">Scopri il Portfolio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Motion Elements -->
+            <div class="absolute top-[15%] right-[5%] w-80 h-[500px] floating-img rotate-3 hidden lg:block" id="hero-img-1">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract Motion" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute bottom-[10%] left-[-5%] w-72 h-96 floating-img -rotate-6 hidden lg:block opacity-80" id="hero-img-2">
+                <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=2564&auto=format&fit=crop" alt="Digital Flow" class="w-full h-full object-cover">
+            </div>
+        </section>
+
+        <!-- Marquee Section -->
+        <div class="py-12 border-y border-dark/5 bg-white/20 backdrop-blur-md overflow-hidden whitespace-nowrap">
+            <div class="inline-block animate-marquee-text">
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter">Strategia Digitale</span>
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter text-brand italic font-serif">Motion Design</span>
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter">UI/UX Craft</span>
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter text-brand italic font-serif">Brand Identity</span>
+            </div>
+            <div class="inline-block animate-marquee-text">
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter">Strategia Digitale</span>
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter text-brand italic font-serif">Motion Design</span>
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter">UI/UX Craft</span>
+                <span class="text-6xl font-display font-extrabold uppercase opacity-10 px-10 tracking-tighter text-brand italic font-serif">Brand Identity</span>
+            </div>
+        </div>
+
+        <!-- Servizi Section -->
+        <section id="servizi" class="py-40 px-8 md:px-20 bg-white/30 backdrop-blur-2xl">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-24 reveal-up">
+                    <h2 class="section-title font-display font-extrabold tracking-tighter">SERVIZI<span class="text-brand">.</span></h2>
+                    <p class="text-xl text-dark/40 max-w-xl mt-6">Dall'idea al lancio, offro una gestione completa del tuo prodotto digitale.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="glass-card p-10 reveal-up">
+                        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mb-8">
+                            <i data-lucide="monitor" class="text-brand w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold mb-4 uppercase tracking-tighter">Sviluppo Web Avanzato</h3>
+                        <p class="text-dark/50 leading-relaxed mb-6">Realizziamo architetture web scalabili e performanti. Dalle Single Page Application (SPA) a complessi sistemi e-commerce, utilizziamo tecnologie all'avanguardia per garantire velocità, sicurezza e una SEO impeccabile.</p>
+                        <ul class="space-y-2 text-sm font-bold opacity-30 uppercase tracking-widest">
+                            <li>• Architetture Next.js / React</li>
+                            <li>• Ottimizzazione Core Web Vitals</li>
+                            <li>• Integrazioni API & Headless CMS</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-10 reveal-up" style="transition-delay: 0.1s">
+                        <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-8">
+                            <i data-lucide="palette" class="text-accent w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold mb-4 uppercase tracking-tighter">Esperienza Utente (UX/UI)</h3>
+                        <p class="text-dark/50 leading-relaxed mb-6">Il design non è solo estetica, ma funzione. Progettiamo interfacce intuitive basate su dati e psicologia del comportamento, finalizzate a massimizzare l'engagement e le conversioni del tuo business.</p>
+                        <ul class="space-y-2 text-sm font-bold opacity-30 uppercase tracking-widest">
+                            <li>• User Journey Mapping</li>
+                            <li>• Prototipazione High-Fidelity</li>
+                            <li>• Design Systems Scalabili</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-10 reveal-up" style="transition-delay: 0.2s">
+                        <div class="w-16 h-16 bg-dark/10 rounded-2xl flex items-center justify-center mb-8">
+                            <i data-lucide="rocket" class="text-dark w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold mb-4 uppercase tracking-tighter">Strategia di Prodotto</h3>
+                        <p class="text-dark/50 leading-relaxed mb-6">Ti aiutiamo a definire la roadmap del tuo prodotto digitale. Analizziamo il mercato e la concorrenza per posizionare il tuo brand in modo unico, garantendo una crescita sostenibile e misurabile nel tempo.</p>
+                        <ul class="space-y-2 text-sm font-bold opacity-30 uppercase tracking-widest">
+                            <li>• Analisi Competitiva</li>
+                            <li>• Go-to-Market Strategy</li>
+                            <li>• Conversion Rate Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progetti Section -->
+        <section id="progetti" class="py-40 px-8 md:px-20">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex justify-between items-end mb-24 reveal-up">
+                    <h2 class="section-title font-display font-extrabold tracking-tighter">PROGETTI<span class="text-brand">.</span></h2>
+                    <span class="font-serif italic text-4xl text-dark/20">Selezionati (04)</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                    <article class="glass-card p-10 reveal-up">
+                        <div class="card-content">
+                            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative group">
+                                <img src="https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2574&auto=format&fit=crop" alt="Aether Project" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-4xl font-display font-extrabold tracking-tighter mb-2 uppercase">AETHER</h3>
+                                    <p class="text-dark/40 font-bold uppercase tracking-widest text-[10px]">Esperienza E-Commerce di Lusso & Motion</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full border border-dark/10 flex items-center justify-center hover:bg-brand hover:text-white transition-all cursor-pointer">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="glass-card p-10 mt-0 md:mt-32 reveal-up" style="transition-delay: 0.1s">
+                        <div class="card-content">
+                            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative group">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2570&auto=format&fit=crop" alt="Neo Project" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-4xl font-display font-extrabold tracking-tighter mb-2 uppercase">NEO.BANK</h3>
+                                    <p class="text-dark/40 font-bold uppercase tracking-widest text-[10px]">Fintech Platform</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full border border-dark/10 flex items-center justify-center hover:bg-brand hover:text-white transition-all cursor-pointer">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="glass-card p-10 reveal-up">
+                        <div class="card-content">
+                            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative group">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" alt="DataFlow" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-4xl font-display font-extrabold tracking-tighter mb-2 uppercase">DATA.FLOW</h3>
+                                    <p class="text-dark/40 font-bold uppercase tracking-widest text-[10px]">AI Visualization Tool</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full border border-dark/10 flex items-center justify-center hover:bg-brand hover:text-white transition-all cursor-pointer">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="glass-card p-10 mt-0 md:mt-32 reveal-up" style="transition-delay: 0.1s">
+                        <div class="card-content">
+                            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative group">
+                                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2564&auto=format&fit=crop" alt="Zenith" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-4xl font-display font-extrabold tracking-tighter mb-2 uppercase">ZENITH</h3>
+                                    <p class="text-dark/40 font-bold uppercase tracking-widest text-[10px]">Immersive Agency Portfolio</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full border border-dark/10 flex items-center justify-center hover:bg-brand hover:text-white transition-all cursor-pointer">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Clash Section -->
+        <section class="clash-container bg-white/10 backdrop-blur-sm overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                <span class="text-[30vw] font-display font-black outline-text uppercase leading-none select-none">Impact</span>
+            </div>
+            
+            <div class="clash-img w-64 h-96 lg:w-96 lg:h-[500px] left-[10%] top-[20%] z-10" id="clash-1">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" class="w-full h-full object-cover" alt="Impact 1">
+            </div>
+            <div class="clash-img w-72 h-[450px] lg:w-[500px] lg:h-[600px] right-[5%] bottom-[10%] z-20" id="clash-2">
+                <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=2564&auto=format&fit=crop" class="w-full h-full object-cover" alt="Impact 2">
+            </div>
+            <div class="clash-img w-48 h-48 lg:w-80 lg:h-80 left-[40%] top-[50%] z-30" id="clash-3">
+                <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2574&auto=format&fit=crop" class="w-full h-full object-cover" alt="Impact 3">
+            </div>
+
+            <div class="relative z-40 text-center px-8">
+                <h2 class="text-5xl md:text-8xl font-display font-extrabold tracking-tighter mb-8 leading-none">
+                    IL DESIGN <br> <span class="text-brand italic font-serif">Senza Limiti.</span>
+                </h2>
+                <p class="text-xl md:text-2xl text-dark/40 font-light max-w-xl mx-auto">
+                    Rompo gli schemi per creare connessioni reali tra brand e persone.
+                </p>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-40 px-8 md:px-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="section-title font-display font-extrabold tracking-tighter mb-24 reveal-up text-center">VOICES<span class="text-brand">.</span></h2>
+                
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="testimonial-bubble reveal-up">
+                        <p class="text-lg italic mb-8">"Lavorare con questo Studio ha trasformato completamente la nostra percezione digitale. Risultati incredibili e un'attenzione al dettaglio senza pari."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full"></div>
+                            <div>
+                                <p class="font-bold text-sm uppercase">Marco Rossi</p>
+                                <p class="text-[10px] opacity-40 font-bold uppercase tracking-widest">CEO @ Aether</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-bubble reveal-up" style="transition-delay: 0.1s">
+                        <p class="text-lg italic mb-8">"Un builder d'eccezione. Codice pulito, design mozzafiato e una strategia che converte davvero."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-pink-100 rounded-full"></div>
+                            <div>
+                                <p class="font-bold text-sm uppercase">Sara Bianchi</p>
+                                <p class="text-[10px] opacity-40 font-bold uppercase tracking-widest">Founder @ Neo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-bubble reveal-up" style="transition-delay: 0.2s">
+                        <p class="text-lg italic mb-8">"Il miglior investimento per il nostro brand quest'anno. Una visione che va oltre il semplice sito web."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full"></div>
+                            <div>
+                                <p class="font-bold text-sm uppercase">Luca Verdi</p>
+                                <p class="text-[10px] opacity-40 font-bold uppercase tracking-widest">Marketing Director @ Zenith</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodo Section -->
+        <section id="metodo" class="py-40 bg-white/30 backdrop-blur-2xl relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-8 md:px-20 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div class="reveal-up">
+                        <h2 class="text-6xl md:text-8xl font-display font-extrabold tracking-tighter mb-10 leading-none">
+                            IL MIO <br> <span class="text-brand italic font-serif">Movimento.</span>
+                        </h2>
+                        <div class="space-y-16">
+                            <div class="group">
+                                <h4 class="text-xl font-extrabold uppercase tracking-widest text-brand mb-4 flex items-center gap-4">
+                                    <span class="w-10 h-px bg-brand"></span> 01. Visione
+                                </h4>
+                                <p class="text-xl text-dark/50 leading-relaxed font-light">
+                                    Analizzo l'anima del tuo brand per estrarne la traiettoria di crescita. Ogni progetto inizia con una strategia, non con un pixel.
+                                </p>
+                            </div>
+                            <div class="group">
+                                <h4 class="text-xl font-extrabold uppercase tracking-widest text-brand mb-4 flex items-center gap-4">
+                                    <span class="w-10 h-px bg-brand"></span> 02. Distillazione
+                                </h4>
+                                <p class="text-xl text-dark/50 leading-relaxed font-light">
+                                    Semplifico la complessità. Creo interfacce che sono estensioni naturali dell'intento dell'utente, riducendo ogni frizione.
+                                </p>
+                            </div>
+                            <div class="group">
+                                <h4 class="text-xl font-extrabold uppercase tracking-widest text-brand mb-4 flex items-center gap-4">
+                                    <span class="w-10 h-px bg-brand"></span> 03. Esplosione
+                                </h4>
+                                <p class="text-xl text-dark/50 leading-relaxed font-light">
+                                    Il lancio è solo l'inizio. Ottimizzo le performance per una velocità che non si vede, si sente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative reveal-up">
+                        <div class="aspect-square bg-white rounded-[4rem] shadow-2xl overflow-hidden border border-white p-2">
+                            <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2574&auto=format&fit=crop" alt="Strategy Texture" class="w-full h-full object-cover rounded-[3.5rem]">
+                        </div>
+                        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-brand rounded-full flex items-center justify-center text-white text-4xl font-black rotate-12 shadow-2xl">
+                            100%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contatti Section -->
+        <section id="contatti" class="py-40 px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-20 items-start">
+                    <div class="reveal-up">
+                        <h2 class="section-title font-display font-extrabold tracking-tighter leading-[0.8] mb-12">
+                            PRONTO AL <br> <span class="text-brand italic font-serif">Grande Salto?</span>
+                        </h2>
+                        <p class="text-2xl text-dark/50 font-light leading-snug mb-16 max-w-lg">
+                            Hai un'idea che aspetta di essere distillata? Scrivimi o scegli il tuo canale preferito per iniziare la conversazione.
+                        </p>
+                        
+                        <div class="space-y-10">
+                            <div class="flex items-center gap-6 group cursor-pointer" onclick="window.location.href='mailto:info@creative-studio.it'">
+                                <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-lg group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 mb-1">Email Diretta</p>
+                                    <p class="text-xl font-bold">info@creative-studio.it</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-6 group cursor-pointer" onclick="window.open('https://wa.me/393456789012', '_blank')">
+                                <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-lg group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
+                                    <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 mb-1">WhatsApp Rapido</p>
+                                    <p class="text-xl font-bold">+39 345 678 9012</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-10 md:p-16 reveal-up">
+                        <div id="contact-form-container">
+                            <form id="contact-form" class="space-y-8">
+                                <div class="grid md:grid-cols-2 gap-8">
+                                    <div class="space-y-2">
+                                        <label class="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Nome</label>
+                                        <input type="text" required placeholder="Il tuo nome" class="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Email</label>
+                                        <input type="email" required placeholder="la-tua@email.com" class="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold">
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Messaggio</label>
+                                    <textarea required rows="5" placeholder="Parlami del tuo progetto..." class="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold resize-none"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-dark text-white py-6 rounded-2xl font-display font-extrabold text-xl hover:bg-brand transition-all shadow-xl group flex items-center justify-center gap-4">
+                                    INVIA IL SEGNALE
+                                    <i data-lucide="send" class="w-6 h-6 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div id="contact-success" class="hidden text-center py-20 space-y-6">
+                            <div class="w-24 h-24 bg-brand/10 text-brand rounded-full flex items-center justify-center mx-auto mb-10 animate-bounce">
+                                <i data-lucide="check" class="w-12 h-12"></i>
+                            </div>
+                            <h3 class="text-4xl font-display font-extrabold tracking-tighter">Messaggio Inviato!</h3>
+                            <p class="text-dark/40 max-w-xs mx-auto">Riceverai una risposta dal nostro team entro 24 ore.</p>
+                            <button onclick="resetForm()" class="text-brand font-bold uppercase tracking-widest text-xs mt-10 hover:underline">Invia un altro messaggio</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-40 grid grid-cols-2 md:grid-cols-4 gap-12 text-left opacity-30 text-[10px] font-extrabold uppercase tracking-[0.4em]">
+                    <div>
+                        <p class="text-brand mb-6">Social</p>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="hover:text-dark transition-colors">Home</a></li>
+                            <li><a href="#" class="hover:text-dark transition-colors">Instagram</a></li>
+                            <li><a href="#" class="hover:text-dark transition-colors">LinkedIn</a></li>
+                            <li><a href="#" class="hover:text-dark transition-colors">Dribbble</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="text-brand mb-6">Location</p>
+                        <p>Milano, IT <br> Worldwide</p>
+                    </div>
+                    <div>
+                        <p class="text-brand mb-6">Email</p>
+                        <p>info@creative-studio.it</p>
+                    </div>
+                    <div>
+                        <p class="text-brand mb-6">Studio</p>
+                        <p>© 2026 Creative Engineering Studio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-20 text-center border-t border-dark/5">
+        <p class="text-[12vw] font-display font-extrabold text-dark/[0.03] select-none tracking-tighter uppercase leading-none">
+            Digital Alchemist Studio
+        </p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Liquid Animation
+        gsap.to('#mesh-1', { x: 100, y: 50, duration: 15, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('#mesh-2', { x: -120, y: -80, duration: 18, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2 });
+        gsap.to('#mesh-3', { x: 80, y: -100, duration: 20, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1 });
+        gsap.to('#mesh-4', { x: -60, y: 120, duration: 14, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3 });
+
+        document.addEventListener('mousemove', (e) => {
+            const xPos = (e.clientX / window.innerWidth - 0.5) * 30; // Ridotto da 60 a 30
+            const yPos = (e.clientY / window.innerHeight - 0.5) * 30; // Ridotto da 60 a 30
+            
+            gsap.to('#mesh-1', { x: xPos * 0.6, y: yPos * 0.6, duration: 3 }); // Ridotto intensità e aumentato durata
+            gsap.to('#mesh-2', { x: -xPos * 0.8, y: -yPos * 0.8, duration: 3 });
+            gsap.to('#mesh-3', { x: xPos * 0.4, y: -yPos * 0.4, duration: 3 });
+            gsap.to('#mesh-4', { x: -xPos * 0.6, y: yPos * 0.6, duration: 3 });
+            
+            gsap.to('#hero-img-1', { x: xPos * 0.2, y: yPos * 0.2, duration: 1.5 });
+            gsap.to('#hero-img-2', { x: -xPos * 0.15, y: -yPos * 0.15, duration: 1.5 });
+        });
+
+        // GSAP Setup
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Reveal Animations
+        document.querySelectorAll('.reveal-up').forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power4.out'
+            });
+        });
+
+        // Header Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-4', 'bg-white/60', 'backdrop-blur-2xl', 'shadow-sm');
+                header.classList.remove('py-8');
+            } else {
+                header.classList.remove('py-4', 'bg-white/60', 'backdrop-blur-2xl', 'shadow-sm');
+                header.classList.add('py-8');
+            }
+        });
+
+        // Parallax
+        gsap.utils.toArray('.glass-card img').forEach(img => {
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                },
+                scale: 1.1, // Ridotto da 1.2 a 1.1
+                y: 15 // Ridotto da 30 a 15
+            });
+        });
+
+        // Contact Form Logic
+        const contactForm = document.getElementById('contact-form');
+        const formContainer = document.getElementById('contact-form-container');
+        const successMessage = document.getElementById('contact-success');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Animazione di "invio"
+                gsap.to(contactForm, {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.5,
+                    onComplete: () => {
+                        formContainer.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                        gsap.from(successMessage, {
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.5
+                        });
+                    }
+                });
+            });
+        }
+
+        function resetForm() {
+            successMessage.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+            contactForm.reset();
+            gsap.from(contactForm, {
+                opacity: 0,
+                y: 20,
+                duration: 0.5
+            });
+        }
+
+        // Hero Floating Effect
+        gsap.to('#hero-img-1', {
+            y: -30,
+            duration: 4,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
+        gsap.to('#hero-img-2', {
+            y: 30,
+            duration: 5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: 1
+        });
+
+        // 3D Tilt
+        document.querySelectorAll('.glass-card, .floating-img').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                gsap.to(card, {
+                    rotateX: (y - centerY) / 25, // Ridotto da 10 a 25 per un effetto più sottile
+                    rotateY: (centerX - x) / 25, // Ridotto da 10 a 25
+                    duration: 0.5,
+                    ease: 'power3.out'
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5 });
+            });
+        });
+
+        // Clash Animation
+        gsap.to('#clash-1', { y: -150, scrollTrigger: { trigger: '.clash-container', scrub: 1 }});
+        gsap.to('#clash-2', { y: 150, scrollTrigger: { trigger: '.clash-container', scrub: 1 }});
+        gsap.to('#clash-3', { scale: 1.5, scrollTrigger: { trigger: '.clash-container', scrub: 1 }});
+    </script>
+</body>
+</html>
