@@ -1,0 +1,75 @@
+nome,citta,email,codice_miur,sito_web,metodo,distanza_km,email_inviata
+Liceo scientifico Isacco Newton,Roma,rmps17000l@istruzione.it,,https://www.liceonewtonroma.it/,Web Scraping (Sicura),0.35,SI
+Istitituto tecnico industriale Galilelo Galilei,Roma,rmtf090003@istruzione.it,,https://www.itisgalilei.edu.it/,OSM Tags (Sicura),0.45,SI
+Scuola primaria Giosuè Carducci,Roma,rmic825008@istruzione.it,,https://www.icmmastroianni.edu.it/,Web Scraping (Sicura),0.49,SI
+Liceo classico Bertrand Russell,Rome,rmpc48000p@istruzione.it,,https://www.liceorussellroma.edu.it/luoghi?id=213,Web Scraping (Sicura),0.51,SI
+Scuola Federico Di Donato,Roma,rmic81400t@istruzione.it,,https://danielemanin.edu.it/,Web Scraping (Sicura),0.52,SI
+Vittorio Central Mosque,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.59,SI
+Istituto Santa Maria,Roma,segreteria@istitutosantamaria.com,,https://www.istitutosantamaria.com/,OSM Tags (Sicura),0.61,SI
+Istituto Professionale Via Acireale,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.7,SI
+Istituto Europeo di Design,Roma,ariannaiannone@2x.avif,,https://www.ied.it/roma,Web Scraping (Sicura),0.71,SI
+Pontificia Universitas Antonianum,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.71,SI
+Università La Sapienza - Facoltà di Medicina e Psicologia,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,https://web.uniroma1.it/fac_medpsico/,Ricostruzione MIUR (Probabile),0.73,SI
+Collegio S. Antonio,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.74,SI
+Liceo classico Niccolò Machiavelli,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,http://www.ismachiavelli.eu/pags/?page=cover,Ricostruzione MIUR (Probabile),0.74,SI
+Pontificia Università Antonianum,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.75,SI
+"Università La Sapienza - Dipartimento di Ingegneria informatica, automatica e gestionale Antonio Ruberti",Roma,dirdiag@uniroma1.it,,https://www.diag.uniroma1.it/,Web Scraping (Sicura),0.76,SI
+Scuola media statale Giosuè Borsi,Roma,rmic8bk005@istruzione.it,,https://www.borsi-saffi.edu.it,OSM Tags (Sicura),0.79,SI
+Istituto professionale Via Acireale,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.8,SI
+Università degli Studi Roma Tre - Dipartimento di Scienze della formazione,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://scienzeformazione.uniroma3.it/,Ricostruzione MIUR (Probabile),0.86,SI
+Pontificia Università Lateranense,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.pul.va/,Ricostruzione MIUR (Probabile),0.93,SI
+Istituto Paritario Santa Teresa di Gesù,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.95,SI
+Università La Sapienza - Sede Marco Polo,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.98,SI
+Scuola primaria Ruggero Bonghi,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.99,SI
+Istituto Santa Dorotea,Roma,segreteria.primaria@istitutosantadorotea.it,,https://www.istitutosantadorotea.it/,Web Scraping (Sicura),1.03,SI
+Istituto Europeo Di Design (IED),Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.03,SI
+Liceo artistico Giorgio De Chirico,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.04,
+Liceo Margherita di Savoia,Roma,rmpm08000b@istruzione.it,,http://iismargheritadisavoia.it/,OSM Tags (Sicura),1.05,
+Sede Ex Vetrerie Sciarra - Sapienza Università di Roma. Distaccamento Facoltà di Lettere,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.05,
+Accademia Costume & Moda,Roma,risorseumane@acmedu.it,,https://www.accademiacostumeemoda.it/,Web Scraping (Sicura),1.06,
+Scuola primaria Via Bobbio,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.comprensivoceneda.edu.it/,Ricostruzione MIUR (Probabile),1.07,
+Piazza Ercoli Lab,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.08,
+La bottega dei giovani talenti,Roma,info@labottegadeigiovanitalenti.eu,,https://labottegadeigiovanitalenti.eu/,Web Scraping (Sicura),1.1,
+"Scuola Secondaria di I grado ""Carlo Urbani""",Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.1,
+Scuola secondaria Giovanni Pascoli,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.16,
+Pontificium Institutum Orientalium Studiorum,Roma,decano.dco@orientale.it,,https://orientale.it/,Web Scraping (Sicura),1.28,
+Isitituto d'istruzione superiore Virgina Woolf,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.28,
+Pontificio Istituto di Archeologia Cristiana,Roma,piac.segretario@piac.it,,https://www.piac.it/,Web Scraping (Sicura),1.32,
+Scuola secondaria Via De Magistris,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.33,
+Facoltà di Lettere e Filosofia,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.34,
+Pontificio seminario lombardo,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.34,
+Liceo scientifico Isacco Newton - sede Olmata,Rome,rmps17000l@istruzione.it,,https://www.liceonewtonroma.it,Web Scraping (Sicura),1.37,
+Genetica,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.39,
+Scuola primaria Enrico Toti,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.39,
+Sapienza Università di Roma,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.uniroma1.it/,Ricostruzione MIUR (Probabile),1.41,
+Botanica,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.42,
+Scuola Superiore per Mediatori Linguistici San Domenico,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.ssmlsandomenico.it/,Ricostruzione MIUR (Probabile),1.43,
+Liceo classico Pilo Albertelli,Roma,rmpc17000d@istruzione.it,,https://piloalbertelli.it/,Web Scraping (Sicura),1.45,
+Dipartimento Scienze Giuridiche,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.46,
+Dipartimento di Scienze Giuridiche,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.47,
+Dipartimento Scienze Statistiche,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.52,
+Scuola primaria Giuseppe Verdi,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.mommsen.edu.it/,Ricostruzione MIUR (Probabile),1.52,
+Dipartimento Scienze Politiche,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.53,
+Dipartimento Scienze sociali ed economiche,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.55,
+"Istituto Professionale di Stato ""Confalonieri""",Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.55,
+Area studio zoologia,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.56,
+"Dipartimento di Ingegneria Civile, Edile e Ambientale",Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.dicea.uniroma1.it/,Ricostruzione MIUR (Probabile),1.56,
+Scuola Alfredo Baccarini,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.56,
+"Dipartimento di ingegneria dell'Informazione, Elettronica e Telecomunicazioni",Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://web.uniroma1.it/dip_diet/,Ricostruzione MIUR (Probabile),1.6,
+Sapienza Università di Roma - Facoltà di Ingegneria,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.61,
+Istituto comprensivo Alessandro Manzoni,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.64,
+Istituto d'istruzione superiore Leopoldo Pirelli,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.leopoldopirelli.edu.it/,Ricostruzione MIUR (Probabile),1.68,
+Scuola Annibale Maria di Francia,Roma,istitutoparitario@scuolaannibaledifrancia.it,,https://scuolaannibaledifrancia.it/,Web Scraping (Sicura),1.69,
+Liceo Niccolo Macchiavelli,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.72,
+Scuola secondaria Piersanti Mattarella,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.72,
+Scuola Giulio Cesare,Roma,rmic8ev004@istruzione.it,,https://www.icviadalverme.edu.it/,Web Scraping (Sicura),1.76,
+Istituto Tecnico Commerciale Duca degli Abruzzi,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.77,
+Liceo scientifico Camillo Cavour,Roma,rmps060005@istruzione.it,,https://www.liceocavour.gov.it,OSM Tags (Sicura),1.83,
+Sapienza Università di Roma - Facoltà di Economia e Ingegneria,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,https://www.uniroma1.it,Ricostruzione MIUR (Probabile),1.84,
+Accademia Internazionale di teatro,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.85,
+Istituto Lucia Noiret,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,http://www.lucianoiret.org/,Ricostruzione MIUR (Probabile),1.85,
+Istituto professionale Leonardo Da Vinci,Roma,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.86,
+Università Roma Tre - Dipartimento di Scienze della Formazione,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),1.95,
+Istituto di Istruzione Superiore Cristoforo Colombo,Rome,rmis12400d@istruzione.it,,https://www.iiscolomboroma.edu.it/,Web Scraping (Sicura),2.0,
+istituto Santa Maria Consolatrice,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),2.03,
+Scuola primaria Gianni Rodari,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),2.07,

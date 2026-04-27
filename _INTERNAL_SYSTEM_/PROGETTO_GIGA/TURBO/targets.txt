@@ -1,0 +1,6 @@
+http://speed.hetzner.de/1GB.bin
+http://speedtest.tele2.net/1GB.zip
+http://speedtest.tele2.net/100MB.zip
+https://proof.ovh.net/files/1Gb.dat
+https://proof.ovh.net/files/100Mb.dat
+https://get.videolan.org/vlc/3.0.20/win64/vlc-3.0.20-win64.exe

@@ -1,0 +1,78 @@
+# MANUALE BYPASS: RELAY TRAMITE FORM TERZI
+
+Questo metodo è una tecnica di bypass "estrema" che consiste nell'utilizzare form di siti web legittimi (Newsletter, Contatti, Condividi per Email) per far sì che quel sito invii un'email al tuo destinatario.
+
+### Come Funziona
+Molti siti web inviano un'email automatica ("Grazie per esserti iscritto", "Copia del tuo messaggio") all'indirizzo inserito nel form. Sfruttando questi form, l'email viene spedita dai server di quel sito (che hanno un'ottima reputazione) e non dai tuoi, bypassando blocchi IP o limiti di Gmail.
+
+### Come Trovare Siti Target (Senza CAPTCHA)
+Perché il metodo funzioni, il sito deve avere un form che:
+1. NON abbia CAPTCHA (ReCaptcha, hCaptcha, ecc.).
+2. Invii una mail di conferma istantanea al destinatario inserito.
+3. (Opzionale) Permetta di includere un messaggio personalizzato o il tuo nome.
+
+**Esempi di Ricerca su Google:**
+- `inurl:contact "powered by contact form 7"`
+- `inurl:newsletter "subscribe to our newsletter"`
+- `site:.it "grazie per averci contattato" "riceverai una copia"`
+
+### Come Configurare Nuovi Target nel Codice
+Apri `scuole_sicurezza_stradale_v2.py` e cerca la lista `relay_targets`. Puoi aggiungere un nuovo sito così:
+
+```python
+{
+    "nome": "Nome del Sito",
+    "url": "https://www.sito-esempio.it/wp-admin/admin-ajax.php", 
+    "data": {
+        "action": "nome_azione",
+        "email_field": dest_email, # Il parametro che il sito usa per l'email
+        "message_field": messaggio, # Se il sito permette un messaggio
+    },
+    "method": "POST",
+    "active": True
+}
+```
+
+###############################################################################
+### METODO 1: GOOGLE FORM RELAY (IL PIÙ AFFIDABILE) ###
+###############################################################################
+Questo metodo usa un tuo Google Form come ponte. Google invierà l'email per te.
+
+1. Vai su https://forms.google.com e crea un nuovo modulo.
+2. Aggiungi una domanda di tipo "Risposta breve" per il Messaggio.
+3. Vai in "Impostazioni" -> "Risposte":
+   - Attiva "Raccogli indirizzi email".
+   - Attiva "Invia agli intervistati una copia della risposta" -> SELEZIONA "Sempre".
+4. Clicca su "Invia" (in alto a destra) -> Icona Link -> Copia l'URL.
+5. Apri l'URL nel browser, premi F12 -> tab "Network".
+6. Invia il form manualmente una volta.
+7. Cerca la chiamata "formResponse" nel tab Network.
+8. Prendi l'URL (es: https://docs.google.com/forms/d/e/.../formResponse).
+9. Trova nei "Form Data" il nome del campo del messaggio (es: entry.123456789).
+10. Inserisci l'URL nella CONFIG del file principale:
+    "google_form_url": "https://docs.google.com/forms/d/e/IL_TUO_ID/formResponse"
+
+###############################################################################
+### METODO 2: SITI WORDPRESS (AUTORISPONDITORI) ###
+###############################################################################
+Molti siti hanno plugin che inviano email di conferma. 
+
+PROBLEMA: Il "Double Opt-in". 
+Molti siti (come CariParma) dicono "OK" ma inviano una mail che richiede di cliccare 
+un link per confermare. Se il destinatario non clicca, non riceve altro.
+
+SOLUZIONE: Cercare siti con "Auto-responder" nei form di contatto (Contact Form 7).
+Nel codice puoi aggiungere siti che conosci che inviano una mail di "Grazie per averci contattato"
+immediatamente senza conferme.
+
+3. **MailPoet:**
+   - URL: `https://sito.it/wp-admin/admin-ajax.php?action=mailpoet_subscription_subscribe`
+   - Dati: `{"data[email]": dest_email}`
+   - Metodo: POST
+
+### Come Identificare i Campi (F12)
+1. Apri il sito target nel browser.
+2. Premi F12 -> scheda "Network" (Rete).
+3. Compila il form e invialo.
+4. Clicca sulla richiesta che appare (solitamente un file .php o una API).
+5. Guarda sotto "Payload" o "Form Data" per vedere i nomi dei campi da usare nello script.

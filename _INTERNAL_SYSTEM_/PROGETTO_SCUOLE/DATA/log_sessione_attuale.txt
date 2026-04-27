@@ -1,0 +1,117 @@
+[15:51:50] DEBUG: Script Path: D:\Progetti\Scuole\scuole_sicurezza_stradale.py
+[15:51:50] DEBUG: Working Dir: D:\Progetti\Scuole
+[15:51:50] DATABASE STORICO TROVATO.
+[15:51:50] Vuoi cancellare tutto lo storico e ricominciare da zero? (s/n): 
+[15:52:09] ==================================================
+[15:52:09] AVVIO PROGETTO: Sicurezza alla Guida
+[15:52:09] IP PUBBLICO ATTUALE: 79.37.213.242
+[15:52:09]    [💡] Se l'IP è segnalato (es. Spamhaus), usa una VPN o riavvia il router.
+[15:52:09] MITTENTE PRIMARIO:  (dalenapoliroma@gmail.com)
+[15:52:09] STATO ACCOUNT EMAIL:
+[15:52:09]  - dalenapoliroma@gmail.com (gmail): DISPONIBILE
+[15:52:09]  - dskskwj0@gmail.com (gmail): DISPONIBILE
+[15:52:09]  - tuo_terzo_account@gmail.com (gmail): DISPONIBILE
+[15:52:09]  - dajeflavio492@gmail.com (gmail): DISPONIBILE
+[15:52:09] LOG SESSIONE: D:\Progetti\Scuole\log_sessione_attuale.txt
+[15:52:09] ==================================================
+
+[15:52:09]  TROVATA SESSIONE PRECEDENTE (D:\Progetti\Scuole\scuole_contattate_sessione.csv)
+[15:52:09]  Vuoi ricaricare i dati dell'ultima scansione? (s/n, invio=n):  [OK] Caricamento dati in corso...
+[15:52:12]  [OK] Caricate 74 scuole dalla sessione precedente (dati normalizzati).
+
+[15:52:12] VUOI VERIFICARE CHE L'INVIO EMAIL FUNZIONI?
+[15:52:12] Vuoi inviare un'email di prova a un tuo indirizzo? (s/n): Inserisci il tuo indirizzo email di prova: Quante volte vuoi inviare l'email di prova? (es: 1, 3, 5) [invio=1]: Invio 2 prova/e a mr9994272@gmail.com...
+[15:52:37]   [1/2] Invio... OK
+[15:52:39]    [Attesa di 4.2s...]
+[15:52:43]   [2/2] Invio... 
+[15:52:44]    [!] ERRORE INVIO (Tentativo 1/3): (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-488ffad20f2sm404244755e9.0 - gsmtp')
+[15:52:44]    [⚠️] CREDENZIALI ERRATE per dskskwj0@gmail.com. Escludo l'account.
+
+[15:52:44]  [⚠️] ACCOUNT LIMITATO: dskskwj0@gmail.com ha raggiunto il limite giornaliero. Verrà escluso per 24h.
+[15:52:44]    [🔄] Cambio account SMTP e riprovo...
+[15:52:46] OK
+
+[15:53:01] ANTEPRIMA EMAIL PER LE SCUOLE:
+[15:53:01] A: rmps17000l@istruzione.it
+[15:53:01] Oggetto: ciao
+[15:53:01] --------------------
+[15:53:01] ciao...
+[15:53:01] --------------------
+
+[15:53:01] AVVIO FASE INVIO (Totale scuole con email: 74)
+[15:53:01] Vuoi inviare l'email a tutte le 74 scuole caricate? (s/n): Quante volte vuoi inviare l'email a OGNI scuola? [invio=1]: [1/73] Invio a: Istitituto tecnico industriale Galilelo Galilei (rmtf090003@istruzione.it)... OK
+[15:53:55] Database storico aggiornato.
+[15:53:55]    [Attesa di 19.8s...]
+[15:54:15] [2/73] Invio a: Scuola primaria Giosuè Carducci (rmic825008@istruzione.it)... 
+[15:54:16]    [!] ERRORE INVIO (Tentativo 1/3): (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-488fb72d365sm406659255e9.1 - gsmtp')
+[15:54:16]    [⚠️] CREDENZIALI ERRATE per tuo_terzo_account@gmail.com. Escludo l'account.
+
+[15:54:16]  [⚠️] ACCOUNT LIMITATO: tuo_terzo_account@gmail.com ha raggiunto il limite giornaliero. Verrà escluso per 24h.
+[15:54:16]    [🔄] Cambio account SMTP e riprovo...
+[15:54:18] OK
+[15:54:18] Database storico aggiornato.
+[15:54:18]    [Attesa di 21.6s...]
+[15:54:39] [3/73] Invio a: Liceo classico Bertrand Russell (rmpc48000p@istruzione.it)... OK
+[15:54:41] Database storico aggiornato.
+[15:54:41]    [Attesa di 22.1s...]
+[15:55:03] [4/73] Invio a: Scuola Federico Di Donato (rmic81400t@istruzione.it)... OK
+[15:55:04] Database storico aggiornato.
+[15:55:04]    [Attesa di 20.3s...]
+[15:55:24] [5/73] Invio a: Vittorio Central Mosque (srchhpgusr@istruzione.it)... OK
+[15:55:26] Database storico aggiornato.
+[15:55:26]    [Attesa di 21.6s...]
+[15:55:48] [6/73] Invio a: Istituto Santa Maria (segreteria@istitutosantamaria.com)... OK
+[15:55:49] Database storico aggiornato.
+[15:55:49]    [Attesa di 18.3s...]
+[15:56:07] [7/73] Invio a: Istituto Professionale Via Acireale (srchhpgusr@istruzione.it)... OK
+[15:56:09] Database storico aggiornato.
+[15:56:09]    [Attesa di 21.9s...]
+[15:56:30] [8/73] Invio a: Istituto Europeo di Design (ariannaiannone@2x.avif)... OK
+[15:56:32] Database storico aggiornato.
+[15:56:32]    [Attesa di 11.9s...]
+[15:56:44] [9/73] Invio a: Pontificia Universitas Antonianum (srchhpgusr@istruzione.it)... OK
+[15:56:45] Database storico aggiornato.
+[15:56:45]    [Attesa di 16.8s...]
+[15:57:02] [10/73] Invio a: Università La Sapienza - Facoltà di Medicina e Psicologia (srchhpgusr@istruzione.it)... OK
+[15:57:03] Database storico aggiornato.
+[15:57:03]    [Attesa di 15.5s...]
+[15:57:18] [11/73] Invio a: Collegio S. Antonio (srchhpgusr@istruzione.it)... OK
+[15:57:20] Database storico aggiornato.
+[15:57:20]    [Attesa di 21.0s...]
+[15:57:41] [12/73] Invio a: Liceo classico Niccolò Machiavelli (srchhpgusr@istruzione.it)... OK
+[15:57:42] Database storico aggiornato.
+[15:57:42]    [Attesa di 12.8s...]
+[15:57:54] [13/73] Invio a: Pontificia Università Antonianum (srchhpgusr@istruzione.it)... OK
+[15:57:56] Database storico aggiornato.
+[15:57:56]    [Attesa di 18.4s...]
+[15:58:14] [14/73] Invio a: Università La Sapienza - Dipartimento di Ingegneria informatica, automatica e gestionale Antonio Ruberti (dirdiag@uniroma1.it)... OK
+[15:58:15] Database storico aggiornato.
+[15:58:15]    [Attesa di 11.8s...]
+[15:58:27] [15/73] Invio a: Scuola media statale Giosuè Borsi (rmic8bk005@istruzione.it)... OK
+[15:58:28] Database storico aggiornato.
+[15:58:28]    [Attesa di 18.3s...]
+[15:58:47] [16/73] Invio a: Istituto professionale Via Acireale (srchhpgusr@istruzione.it)... OK
+[15:58:48] Database storico aggiornato.
+[15:58:48]    [Attesa di 18.6s...]
+[15:59:06] [17/73] Invio a: Università degli Studi Roma Tre - Dipartimento di Scienze della formazione (srchhpgusr@istruzione.it)... OK
+[15:59:08] Database storico aggiornato.
+[15:59:08]    [Attesa di 11.7s...]
+[15:59:20] [18/73] Invio a: Pontificia Università Lateranense (srchhpgusr@istruzione.it)... OK
+[15:59:21] Database storico aggiornato.
+[15:59:21]    [Attesa di 22.8s...]
+[15:59:43] [19/73] Invio a: Istituto Paritario Santa Teresa di Gesù (srchhpgusr@istruzione.it)... OK
+[15:59:45] Database storico aggiornato.
+[15:59:45]    [Attesa di 11.0s...]
+[15:59:56] [20/73] Invio a: Università La Sapienza - Sede Marco Polo (srchhpgusr@istruzione.it)... OK
+[15:59:57] Database storico aggiornato.
+[15:59:57]    [Attesa di 17.0s...]
+[16:00:14] [21/73] Invio a: Scuola primaria Ruggero Bonghi (srchhpgusr@istruzione.it)... OK
+[16:00:16] Database storico aggiornato.
+[16:00:16]    [Attesa di 11.4s...]
+[16:00:27] [22/73] Invio a: Istituto Santa Dorotea (segreteria.primaria@istitutosantadorotea.it)... OK
+[16:00:28] Database storico aggiornato.
+[16:00:28]    [Attesa di 12.2s...]
+[16:00:41] [23/73] Invio a: Istituto Europeo Di Design (IED) (srchhpgusr@istruzione.it)... OK
+[16:00:42] Database storico aggiornato.
+[16:00:42]    [Attesa di 11.6s...]
+[16:00:54] [24/73] Invio a: Liceo artistico Giorgio De Chirico (srchhpgusr@istruzione.it)... 

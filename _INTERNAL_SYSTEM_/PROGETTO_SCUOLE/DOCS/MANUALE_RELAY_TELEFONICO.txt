@@ -1,0 +1,29 @@
+# MANUALE BYPASS: RELAY TELEFONICO (SMS/CHIAMATE)
+
+Questo metodo è una tecnica di bypass "estrema" che consiste nell'utilizzare form di siti web legittimi (Preventivi, Assicurazioni, Prestiti) per far sì che quel sito invii un SMS di verifica o effettui una chiamata di conferma al tuo destinatario.
+
+### Come Funziona
+Molti siti di servizi (es. Prima.it, ConvieneOnline, Facile.it) richiedono un numero di telefono per inviare un preventivo o verificare l'identità. Inserendo il numero del destinatario, il sito invierà automaticamente un messaggio (SMS) o una chiamata automatica ("Recall").
+
+### Come Configurare il Destinatario
+Nel file principale o nel file di test, aggiungi alla `CONFIG` il campo:
+`"telefono_destinatario": "3331234567"` (senza prefisso +39 se non richiesto).
+
+### Siti Target Inseriti (Esempi)
+1. **ConvieneOnline:** Invia una richiesta di preventivo veloce.
+2. **Prima.it:** Invia un codice di verifica via SMS.
+3. **Prestiti.it:** Attiva una richiesta di ricontatto telefonico.
+
+### Come Trovare Nuovi Siti Target (F12)
+Per aggiungere nuovi siti che inviano SMS/Chiamate:
+1. Apri un sito di preventivi (assicurazioni, prestiti, luce/gas).
+2. Premi **F12** -> scheda **Network** (Rete).
+3. Inserisci un numero di prova e clicca su "Invia" o "Verifica".
+4. Cerca la chiamata (solitamente `admin-ajax.php` o `/api/v1/...`) nel tab Network.
+5. Guarda sotto **Payload** o **Form Data** per vedere i nomi dei campi (es: `tel`, `phone`, `mobile`).
+6. Aggiungi il nuovo target nella lista `phone_targets` in `scuole_sicurezza_stradale_v2.py`.
+
+### Note Importanti
+- **Successo:** Il metodo è considerato "riuscito" se il server del sito accetta la richiesta (Status 200). Non possiamo sapere se l'SMS è arrivato davvero, ma solitamente questi siti hanno alta affidabilità.
+- **Privacy:** Usa questo metodo solo per scopi leciti e di test, poiché genera comunicazioni automatiche da siti terzi.
+- **Frequenza:** Non abusare dello stesso sito per lo stesso numero, o verrai bloccato (Rate Limiting). Lo script ruota automaticamente tra i siti disponibili.

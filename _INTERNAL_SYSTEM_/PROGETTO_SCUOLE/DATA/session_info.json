@@ -1,0 +1,10 @@
+{
+    "posizione_centro": "Rome",
+    "coordinate": {
+        "lat": 41.8905,
+        "lon": 12.5127
+    },
+    "raggio": 2,
+    "tipo_scuole": "tutte",
+    "timestamp": "2026-04-27 15:47:39"
+}

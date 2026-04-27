@@ -37,65 +37,64 @@ goto MENU
 
 :SCUOLE_DASH
 echo Avvio Dashboard Scuole...
-cd /d "d:\ANDREA\GitHub\Scuole\CORE_SCUOLE"
+cd /d "%~dp0_INTERNAL_SYSTEM_\PROGETTO_SCUOLE"
 start python dashboard.py
 pause
 goto MENU
 
 :SCUOLE_MIUR
 echo Sincronizzazione Database MIUR...
-cd /d "d:\ANDREA\GitHub\Scuole\CORE_SCUOLE"
+cd /d "%~dp0_INTERNAL_SYSTEM_\PROGETTO_SCUOLE"
 python -c "from scuole_sicurezza_stradale import sincronizza_database_miur; sincronizza_database_miur(force=True)"
 pause
 goto MENU
 
 :SCUOLE_MONITOR
 echo Avvio Monitoraggio Sistema...
-cd /d "d:\ANDREA\GitHub\Scuole\CORE_SCUOLE"
+cd /d "%~dp0_INTERNAL_SYSTEM_\PROGETTO_SCUOLE"
 start python monitor_system.py
 pause
 goto MENU
 
 :GIGA_EATER
 echo Avvio Bandwidth Eater (God-Mode)...
-cd /d "d:\ANDREA\GitHub\Giga\CORE_GIGA"
+cd /d "%~dp0_INTERNAL_SYSTEM_\PROGETTO_GIGA"
 start python bandwidth_eater_ultimate.py
 pause
 goto MENU
 
 :GIGA_MONITOR
 echo Avvio Counter Giga...
-cd /d "d:\ANDREA\GitHub\Giga\CORE_GIGA"
+cd /d "%~dp0_INTERNAL_SYSTEM_\PROGETTO_GIGA"
 start python real_time_giga_counter.py
 pause
 goto MENU
 
 :MIO_SUPER
 echo Avvio Super Agente...
-cd /d "d:\ANDREA\GitHub\mio"
+cd /d "%~dp0"
 start AVVIA_SUPER_AGENTE.bat
 pause
 goto MENU
 
 :MIO_ASSIST
 echo Avvio Aim Assist Ultra...
-cd /d "d:\ANDREA\GitHub\mio\_INTERNAL_SYSTEM_\rete"
+cd /d "%~dp0_INTERNAL_SYSTEM_\rete"
 start python aim_assist_ultra.py
 pause
 goto MENU
 
 :DOCS
 echo Apertura Documentazione...
-start notepad "d:\ANDREA\GitHub\mio\INSTRUCTIONS_TRAE.md"
+start notepad "%~dp0INSTRUCTIONS_TRAE.md"
 goto MENU
 
 :GIT_SYNC
 echo Sincronizzazione Git in corso...
-cd /d "d:\ANDREA\GitHub\mio"
+cd /d "%~dp0"
 git add .
-git commit -m "Auto-sync from Central Control Panel"
+git commit -m "Auto-sync from Central Control Panel - Full Integrated"
 git push origin main
-echo Sync completato per 'mio'.
-echo (Nota: Per 'Scuole' e 'Giga', configura il remote URL prima di sincronizzare)
+echo Sync completato per 'mio' (Include Scuole e Giga).
 pause
 goto MENU

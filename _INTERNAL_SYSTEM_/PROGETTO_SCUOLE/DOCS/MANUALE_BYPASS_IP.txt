@@ -1,0 +1,44 @@
+=== GUIDA AL BYPASS IP E VPS GRATUITA ===
+
+Se ricevi l'errore "Blocked using Spamhaus" o "5.7.26 Unauthenticated", significa che l'IP della tua connessione di casa è segnalato come spam.
+
+Ecco 3 soluzioni che ho implementato nel tuo script:
+
+1. CAMBIO IP IMMEDIATO (VPN o ROUTER)
+   - Accendi una VPN (es. ProtonVPN, NordVPN, etc.) prima di lanciare lo script.
+   - Oppure riavvia il router: se hai un IP dinamico, cambierà.
+   - Lo script ora ti mostra l'IP attuale all'avvio: controlla se cambia!
+
+2. GOOGLE APPS SCRIPT (Il tuo "VPS" gratuito)
+   Puoi usare i server di Google come ponte. Bypassa l'IP di casa e i limiti locali.
+   
+   A. Vai su https://script.google.com/
+   B. Crea un nuovo progetto e incolla questo codice:
+      
+      function doPost(e) {
+        var p = e.parameter;
+        MailApp.sendEmail(p.to, p.subject, p.body);
+        return ContentService.createTextOutput("OK");
+      }
+
+   C. Clicca su "Distribuisci" -> "Nuova distribuzione" -> "Applicazione Web".
+   D. Imposta "Chiunque" (Anyone) alla voce "Chi ha accesso".
+   E. Copia l'URL che ti viene dato e incollalo nel file v2.py alla voce:
+      "google_script_url": "TUO_URL_QUI"
+
+3. PROXY ROTATION
+   - Ho creato un file chiamato `proxies.json`.
+   - Se hai dei proxy (SOCKS5 o HTTP), inseriscili lì dentro.
+   - Lo script li userà per "nascondere" il tuo IP di casa.
+
+4. SMTP RELAY PROFESSIONALE (Brevo)
+   Se non vuoi sbatterti con proxy o script, usa un servizio professionale.
+   - Vai su https://www.brevo.com/ (ex Sendinblue).
+   - Crea un account gratuito (300 email al giorno gratis).
+   - Prendi le credenziali SMTP (SMTP Key) e mettile in CONFIG:
+     "brevo_user": "tua_email@esempio.it",
+     "brevo_password": "tua_smtp_key"
+   - Lo script lo userà automaticamente se Gmail fallisce.
+
+-------------------------------------------------------
+Usa queste tecniche per non fermarti mai!

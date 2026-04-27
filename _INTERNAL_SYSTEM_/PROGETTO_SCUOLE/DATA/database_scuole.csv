@@ -1,0 +1,12 @@
+nome,citta,email,codice_miur,sito_web,metodo,distanza_km,email_inviata
+Liceo scientifico Isacco Newton,Roma,rmps17000l@istruzione.it,,https://www.liceonewtonroma.it/,Web Scraping (Sicura),0.35,SI
+Istitituto tecnico industriale Galilelo Galilei,Roma,rmtf090003@istruzione.it,,https://www.itisgalilei.edu.it/,OSM Tags (Sicura),0.45,SI
+Scuola primaria Giosuè Carducci,Roma,rmic825008@istruzione.it,,https://www.icmmastroianni.edu.it/,Web Scraping (Sicura),0.49,SI
+Liceo classico Bertrand Russell,Rome,rmpc48000p@istruzione.it,,https://www.liceorussellroma.edu.it/luoghi?id=213,Web Scraping (Sicura),0.51,SI
+Scuola Federico Di Donato,Roma,rmic81400t@istruzione.it,,https://danielemanin.edu.it/,Web Scraping (Sicura),0.52,SI
+Vittorio Central Mosque,Rome,srchhpgusr@istruzione.it,SRCHHPGUSR,,Ricostruzione MIUR (Probabile),0.59,SI
+Istituto Santa Maria,Roma,segreteria@istitutosantamaria.com,,https://www.istitutosantamaria.com/,OSM Tags (Sicura),0.61,SI
+Istituto Europeo di Design,Roma,ariannaiannone@2x.avif,,https://www.ied.it/roma,Web Scraping (Sicura),0.71,SI
+"Università La Sapienza - Dipartimento di Ingegneria informatica, automatica e gestionale Antonio Ruberti",Roma,dirdiag@uniroma1.it,,https://www.diag.uniroma1.it/,Web Scraping (Sicura),0.76,SI
+Scuola media statale Giosuè Borsi,Roma,rmic8bk005@istruzione.it,,https://www.borsi-saffi.edu.it,OSM Tags (Sicura),0.79,SI
+Istituto Santa Dorotea,Roma,segreteria.primaria@istitutosantadorotea.it,,https://www.istitutosantadorotea.it/,Web Scraping (Sicura),1.03,SI

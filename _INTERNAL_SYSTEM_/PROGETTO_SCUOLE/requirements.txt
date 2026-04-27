@@ -1,0 +1,12 @@
+# Super Agents Project - Requirements
+flask
+requests
+beautifulsoup4
+pandas
+aiohttp
+colorama
+ripgrep
+# Per email e networking avanzato
+dnspython
+imaplib2
+pyopenssl
