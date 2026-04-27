@@ -220,40 +220,32 @@ def invia_via_form_telefono(num_telefono, messaggio, nome_mittente="Andrea"):
     # Pulizia numero
     num_clean = "".join(filter(str.isdigit, str(num_telefono)))
     
-    phone_targets = [
-        {"nome": "ConvieneOnline", "url": "https://www.convieneonline.it/wp-admin/admin-ajax.php", "data": {"action": "richiedi_preventivo_veloce", "telefono": num_clean, "nome": nome_mittente}, "method": "POST"},
-        {"nome": "Prima.it", "url": "https://www.prima.it/api/v1/lead", "data": {"phone": num_clean, "source": "organic"}, "method": "POST"},
-        {"nome": "Prestiti.it", "url": "https://www.prestiti.it/richiesta-contatto", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Facile.it", "url": "https://www.facile.it/assicurazioni-auto/preventivo.html", "data": {"cellulare": num_clean}, "method": "POST"},
-        {"nome": "Segugio", "url": "https://assicurazioni.segugio.it/salvataggio-preventivo.asp", "data": {"tel": num_clean}, "method": "POST"},
-        {"nome": "ComparaSemplice", "url": "https://www.comparasemplice.it/api/v1/leads", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "SosTariffe", "url": "https://www.sostariffe.it/assicurazioni/auto/confronto", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Switcho", "url": "https://api.switcho.it/v1/leads", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Pulsee", "url": "https://pulsee.it/api/v1/lead", "data": {"mobile": num_clean}, "method": "POST"},
-        {"nome": "NeN", "url": "https://nen.it/api/v1/lead", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Eon-Energia", "url": "https://www.eon-energia.com/it/pc/preventivo-luce-gas.html", "data": {"tel": num_clean}, "method": "POST"},
-        {"nome": "Enel-X", "url": "https://www.enelx.com/it/it/form/contattaci", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Axa-Assicurazioni", "url": "https://www.axa.it/preventivo-auto", "data": {"cellulare": num_clean}, "method": "POST"},
-        {"nome": "Allianz-Direct", "url": "https://www.allianzdirect.it/api/v1/quote", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Generali", "url": "https://www.generali.it/assicurazioni/auto", "data": {"tel": num_clean}, "method": "POST"},
-        {"nome": "UnipolSai", "url": "https://www.unipolsai.it/preventivo-auto", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Zurich-Connect", "url": "https://www.zurich-connect.it/preventivo-auto", "data": {"mobile": num_clean}, "method": "POST"},
-        {"nome": "Quixa", "url": "https://www.quixa.it/api/quote", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Genertel", "url": "https://www.genertel.it/preventivo-auto", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Linear", "url": "https://www.linear.it/preventivo-auto", "data": {"cell": num_clean}, "method": "POST"},
-        {"nome": "Verti", "url": "https://www.verti.it/api/lead", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Cattolica", "url": "https://www.cattolica.it/preventivo", "data": {"tel": num_clean}, "method": "POST"},
-        {"nome": "Sara", "url": "https://www.sara.it/preventivo-auto", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Groupama", "url": "https://www.groupama.it/preventivo", "data": {"mobile": num_clean}, "method": "POST"},
-        {"nome": "Vittoria", "url": "https://www.vittoriaassicurazioni.com/preventivo", "data": {"tel": num_clean}, "method": "POST"},
-        {"nome": "Itas", "url": "https://www.gruppoitas.it/preventivo", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Reale-Mutua", "url": "https://www.realemutua.it/preventivo", "data": {"telefono": num_clean}, "method": "POST"},
-        {"nome": "Yolo", "url": "https://www.yolo-insurance.com/api/lead", "data": {"phone": num_clean}, "method": "POST"},
-        {"nome": "Wakam", "url": "https://www.wakam.com/api/quote", "data": {"mobile": num_clean}, "method": "POST"},
-        {"nome": "Telepass", "url": "https://www.telepass.com/it/privati/servizi/assicurazione-auto", "data": {"tel": num_clean}, "method": "POST"}
-    ]
+    # Caricamento target da JSON esterno
+    phone_targets = []
+    targets_path = os.path.join(os.path.dirname(__file__), "DATA/phone_targets.json")
+    if os.path.exists(targets_path):
+        try:
+            with open(targets_path, "r", encoding="utf-8") as f:
+                raw_targets = json.load(f)
+                # Sostituzione dinamica dei placeholder
+                for t in raw_targets:
+                    new_data = {}
+                    for k, v in t["data"].items():
+                        if isinstance(v, str):
+                            new_data[k] = v.replace("{num_clean}", num_clean).replace("{nome_mittente}", nome_mittente)
+                        else:
+                            new_data[k] = v
+                    t["data"] = new_data
+                    phone_targets.append(t)
+        except Exception as e:
+            print(f"   [⚠️] Errore caricamento target JSON: {e}")
+
+    if not phone_targets:
+        print("   [⚠️] Nessun target caricato. Verifica DATA/phone_targets.json")
+        return False
     
-    print(f"   [📱] Avvio MEGA-RELAY TELEFONICO su {num_clean} (30+ Target)...")
+    print(f"   [📱] Avvio MEGA-RELAY TELEFONICO su {num_clean} ({len(phone_targets)} Target)...")
+
     success_count = 0
     headers = {"User-Agent": network_manager.get_random_ua(), "X-Requested-With": "XMLHttpRequest"}
 
