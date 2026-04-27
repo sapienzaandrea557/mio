@@ -16,12 +16,14 @@ echo [4] PROGETTO GIGA: Avvia Bandwidth Eater (God-Mode)
 echo [5] PROGETTO GIGA: Monitor Traffico in Tempo Reale
 echo [6] PROGETTO MIO: Avvia Super Agente (ADB/Controllo)
 echo [7] PROGETTO MIO: Aim Assist Ultra (Rete)
-echo [8] APRI DOCUMENTAZIONE: Istruzioni Expert Policy
-echo [9] GIT: Sincronizza tutto (Add, Commit, Push)
+echo [8] PRONOSTICI CALCIO: Avvia Analisi ML
+echo [9] GESTORE WIFI: Avvia Scanner 89
+echo [D] APRI DOCUMENTAZIONE: Istruzioni Expert Policy
+echo [G] GIT: Sincronizza tutto (Add, Commit, Push)
 echo [0] ESCI
 echo.
 echo ============================================================
-set /p choice="Seleziona un'opzione (0-9): "
+set /p choice="Seleziona un'opzione: "
 
 if "%choice%"=="1" goto SCUOLE_DASH
 if "%choice%"=="2" goto SCUOLE_MIUR
@@ -30,9 +32,25 @@ if "%choice%"=="4" goto GIGA_EATER
 if "%choice%"=="5" goto GIGA_MONITOR
 if "%choice%"=="6" goto MIO_SUPER
 if "%choice%"=="7" goto MIO_ASSIST
-if "%choice%"=="8" goto DOCS
-if "%choice%"=="9" goto GIT_SYNC
+if "%choice%"=="8" goto PRONOSTICI
+if "%choice%"=="9" goto WIFI
+if /i "%choice%"=="D" goto DOCS
+if /i "%choice%"=="G" goto GIT_SYNC
 if "%choice%"=="0" exit
+goto MENU
+
+:PRONOSTICI
+echo Avvio Pronostici Calcio ML...
+cd /d "%~dp0"
+start AVVIA_PRONOSTICI.bat
+pause
+goto MENU
+
+:WIFI
+echo Avvio Gestore Wifi Scanner 89...
+cd /d "%~dp0"
+start AVVIA_WIFI.bat
+pause
 goto MENU
 
 :SCUOLE_DASH
