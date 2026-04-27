@@ -1,50 +1,27 @@
-# 🚀 SUPER AGENTE WEB v9.1 (Intelligent Search AI)
+# 🚀 SUPER AGENTE HUB v10.0 (Global Expert System)
 
-Questo progetto è un agente di automazione web intelligente basato su **Playwright** e **TypeScript**. L'obiettivo è navigare qualsiasi sito web per raggiungere obiettivi descritti in linguaggio naturale (es. "fai abbonamento annuale pro+").
+Benvenuto nell'HUB centrale del progetto **Super Agents**. Questo repository non è solo un software di automazione, ma un sistema gestito da un'IA operante in **SUPER EXPERT MODE**.
 
-## 🧠 Architettura del Sistema
-
-L'agente non usa selettori statici, ma un **Motore Semantico Universale** che analizza il DOM in tempo reale ad ogni passo.
-
-### 1. Motore di Scoring (Semantic Scoring Engine)
-Ogni elemento cliccabile viene valutato secondo diversi criteri:
-- **Intento Transazionale**: Priorità assoluta a termini come "buy", "upgrade", "select", "checkout".
-- **Eredità Contestuale**: Se un bottone è dentro un container (es. una card) che contiene la parola chiave dell'obiettivo (es. "Pro+"), riceve un bonus massiccio.
-- **Heuristics Visuali**: Analisi CSS per identificar "veri" bottoni (background-color, bordi arrotondati, cursore pointer).
-- **Anti-Loop**: Esclusione automatica di elementi già cliccati che non hanno portato a cambi di stato.
-- **Penalizzazione Opposti**: Se l'utente vuole il piano "annuale", l'agente penalizza attivamente i bottoni che contengono "mensile".
-
-### 2. Auto-Debug (Deep DOM Fallback)
-Se il motore standard non trova azioni valide, scatta la fase di **Deep Debug**:
-- L'IA analizza i blocchi di contenuto (Pricing Cards, Sezioni) invece dei singoli bottoni.
-- Identifica il blocco più pertinente e forza il click sul bottone principale all'interno di quel blocco.
-
-### 3. Gestione Moduli v8.6 (Novità)
-- **Login Proattivo**: L'IA rileva campi di input (Email/Password) in tempo reale. Se serve un account per procedere, si ferma e chiede i dati all'utente.
-- **Supporto Step-by-Step**: Gestisce login divisi su più pagine (es. prima Email, poi Password) premendo automaticamente "Next" o "Continua".
-- **Dati di Pagamento**: Rileva campi per carte di credito durante il checkout.
-
-### 4. Analisi Semantica v9.1 (Novità)
-- **Comando `analizza [query]`**: Ricerca intelligente di elementi (es. `analizza telefono`).
-- **Persistence & Auto-Refresh**: Dopo aver selezionato un numero, l'agente aggiorna **automaticamente** la lista dei risultati in tempo reale, mantenendo la stessa query di ricerca.
-- **Cache Invalidation**: Ogni analisi forza una scansione fresca del DOM per garantire che i dati riflettano sempre lo stato più recente della pagina.
-- **Ordinamento per Rilevanza**: I risultati sono pesati in base all'intento semantico e ai sinonimi (es. `telefono` -> `phone`, `mobile`).
-
-### 5. Apprendimento (Self-Learning)
-L'agente salva i successi e i fallimenti nel file `memory.json`.
-- **Successo**: Rafforza l'associazione tra obiettivo e testo del bottone.
-- **Fallimento**: Genera un report in `ai_fail_report.json` con lo storico delle azioni.
-
-## 📂 Struttura File
-- `web_explorer.ts`: Cuore pulsante dell'IA.
-- `memory.json`: Database della conoscenza acquisita.
-- `README.md`: Documentazione tecnica (questa guida).
-- `start_agent.bat`: Script di installazione e avvio completo.
-- `avvio_rapido.bat`: Lancio immediato (URL di Trae predefinito).
-
-## 🚀 Avvio
-1. Esegui `start_agent.bat` per la prima volta.
-2. All'avvio, puoi premere **INVIO** per andare subito su `https://www.trae.ai/`.
+## 🧠 Identità del Sistema (Expert Policy)
+Questo repository è gestito e sviluppato seguendo rigorosi standard di:
+- **Programmazione & Debugging Profondo**: Analisi meticolosa **riga per riga** per garantire codice privo di errori e logiche ottimizzate.
+- **Analisi Finanziaria & Trading**: Algoritmi e strategie gestiti con rigore matematico da un esperto del settore.
+- **Sicurezza Informatica**: Protezione dei dati e analisi delle vulnerabilità proattiva.
 
 ---
-*Creato per essere intelligente, variabile e pronto a tutto.*
+
+## 🚀 Funzionalità Principali
+1. **Super Agente Web**: Automazione intelligente basata su Playwright e TypeScript.
+2. **Progetto Scuole**: Dashboard amministrativa, ricerca MIUR e gestione email.
+3. **Giga Eater**: Ottimizzazione estrema del consumo banda (God-Mode).
+4. **Pronostici Calcio**: Motore di predizione basato su Machine Learning.
+5. **Gestore WiFi**: Scanner e strumenti di analisi rete avanzati.
+
+---
+
+## 📂 Struttura del Repository
+Utilizzare il [PANNELLO_DI_CONTROLLO.bat](file:///d:/ANDREA/GitHub/mio/PANNELLO_DI_CONTROLLO.bat) nella root per accedere a tutte le funzioni.
+
+---
+*Analizzato, controllato e ragionato riga per riga.*
+
