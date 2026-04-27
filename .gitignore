@@ -1,6 +1,1 @@
-.next/
-node_modules/
-.DS_Store
-*.log
-
-/generated/prisma
+node_modules

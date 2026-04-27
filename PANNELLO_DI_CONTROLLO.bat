@@ -79,7 +79,7 @@ goto MENU
 
 :MIO_ASSIST
 echo Avvio Aim Assist Ultra...
-cd /d "d:\ANDREA\GitHub\mio\rete"
+cd /d "d:\ANDREA\GitHub\mio\_INTERNAL_SYSTEM_\rete"
 start python aim_assist_ultra.py
 pause
 goto MENU
