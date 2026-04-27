@@ -15,10 +15,12 @@
     "@react-three/fiber": "^8.16.2",
     "gsap": "^3.12.5",
     "lucide-react": "^0.378.0",
-    "next": "14.2.3",
+    "next": "^16.2.4",
+    "playwright": "^1.59.1",
     "prisma": "^6.19.3",
     "react": "^18",
     "react-dom": "^18",
+    "readline-sync": "^1.4.10",
     "three": "^0.164.1"
   },
   "devDependencies": {

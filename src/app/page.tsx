@@ -152,9 +152,13 @@ const Home = () => {
   }, []);
 
   const [formSubmitted, setFormSubmitted] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
     const form = e.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
@@ -172,11 +176,15 @@ const Home = () => {
       if (response.ok) {
         setFormSubmitted(true);
         form.reset();
+        setTimeout(() => setFormSubmitted(false), 5000); // Reset feedback after 5s
       } else {
-        alert("Errore nel salvataggio. Riprova più tardi.");
+        const errorData = await response.json();
+        alert(`Errore: ${errorData.error || "Riprova più tardi."}`);
       }
     } catch (error) {
       alert("Errore di connessione. Controlla la tua rete.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -461,20 +469,25 @@ const Home = () => {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Nome</label>
-                      <input type="text" name="name" required placeholder="Il tuo nome" className="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold" />
+                      <label htmlFor="contact-name" className="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Nome</label>
+                      <input id="contact-name" type="text" name="name" required placeholder="Il tuo nome" className="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold disabled:opacity-50" disabled={isSubmitting} />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Email</label>
-                      <input type="email" name="email" required placeholder="la-tua@email.it" className="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold" />
+                      <label htmlFor="contact-email" className="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Email</label>
+                      <input id="contact-email" type="email" name="email" required placeholder="la-tua@email.it" className="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold disabled:opacity-50" disabled={isSubmitting} />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Il Tuo Progetto</label>
-                    <textarea name="project" rows={4} required placeholder="Raccontami la tua visione..." className="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold resize-none"></textarea>
+                    <label htmlFor="contact-project" className="text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-30 ml-2">Il Tuo Progetto</label>
+                    <textarea id="contact-project" name="project" rows={4} required placeholder="Raccontami la tua visione..." className="w-full bg-white/50 border border-white/80 rounded-2xl px-6 py-4 outline-none focus:border-brand transition-all font-semibold resize-none disabled:opacity-50" disabled={isSubmitting}></textarea>
                   </div>
-                  <button type="submit" className="group w-full bg-dark text-white rounded-full py-6 font-extrabold uppercase tracking-widest text-xs flex items-center justify-center gap-4 hover:bg-brand transition-all shadow-xl hover:shadow-brand/20">
-                    INVIA PROPOSTA <Send className="w-6 h-6 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+                  <button 
+                    type="submit" 
+                    className={`group w-full bg-dark text-white rounded-full py-6 font-extrabold uppercase tracking-widest text-xs flex items-center justify-center gap-4 transition-all shadow-xl ${isSubmitting ? 'opacity-70 cursor-wait' : 'hover:bg-brand hover:shadow-brand/20 active:scale-95'}`}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'INVIO IN CORSO...' : 'INVIA PROPOSTA'} 
+                    {!isSubmitting && <Send className="w-6 h-6 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />}
                   </button>
                 </form>
               ) : (

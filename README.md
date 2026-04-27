@@ -1,35 +1,50 @@
-# Creative Engineering Studio - Portfolio Wizard
+# 🚀 SUPER AGENTE WEB v9.1 (Intelligent Search AI)
 
-Questo è un portfolio professionale moderno sviluppato con **Next.js 14**, focalizzato su performance, animazioni fluide e una gestione integrata dei contatti.
+Questo progetto è un agente di automazione web intelligente basato su **Playwright** e **TypeScript**. L'obiettivo è navigare qualsiasi sito web per raggiungere obiettivi descritti in linguaggio naturale (es. "fai abbonamento annuale pro+").
 
-## 🚀 Stack Tecnologico
-- **Frontend**: Next.js 14 (App Router), React, Tailwind CSS.
-- **Animazioni**: GSAP (ScrollTrigger), Framer Motion.
-- **Database/Backend**: Prisma ORM con SQLite (Locale).
-- **Icone**: Lucide-React.
+## 🧠 Architettura del Sistema
 
-## 📂 Struttura del Progetto
-- `/src/app`: Route del sito (Home, CRM, API).
-- `/src/components`: Componenti UI riutilizzabili (Header, DynamicBackground, ServiceCard).
-- `/src/lib`: Configurazioni core (Prisma client).
-- `/prisma`: Schema del database e migrazioni.
-- `/site_backup`: Backup della versione precedente del sito.
+L'agente non usa selettori statici, ma un **Motore Semantico Universale** che analizza il DOM in tempo reale ad ogni passo.
 
-## 🛠️ Funzionalità Chiave
-1. **Landing Page Dinamica**: Animazioni avanzate all'avvio e allo scroll.
-2. **Sistema di Contatti**: Form integrato che salva i dati in un database locale tramite API Route (`/api/contact`).
-3. **CRM Interno**: Dashboard riservata accessibile a `/crm` per visualizzare i messaggi ricevuti.
-4. **Ottimizzazione SEO/IA**: Configurazione metadati avanzata per motori di ricerca e crawler IA (attualmente disabilitata via robots per privacy, ma configurata).
+### 1. Motore di Scoring (Semantic Scoring Engine)
+Ogni elemento cliccabile viene valutato secondo diversi criteri:
+- **Intento Transazionale**: Priorità assoluta a termini come "buy", "upgrade", "select", "checkout".
+- **Eredità Contestuale**: Se un bottone è dentro un container (es. una card) che contiene la parola chiave dell'obiettivo (es. "Pro+"), riceve un bonus massiccio.
+- **Heuristics Visuali**: Analisi CSS per identificar "veri" bottoni (background-color, bordi arrotondati, cursore pointer).
+- **Anti-Loop**: Esclusione automatica di elementi già cliccati che non hanno portato a cambi di stato.
+- **Penalizzazione Opposti**: Se l'utente vuole il piano "annuale", l'agente penalizza attivamente i bottoni che contengono "mensile".
 
-## 📊 Gestione Database (CRM)
-Il progetto utilizza **Prisma** con un database SQLite locale (`dev.db`).
-- **Visualizzazione Dati**: Accedere a `/crm` sul browser o eseguire `npx prisma studio`.
-- **Produzione (Vercel)**: Per rendere persistente il salvataggio online, è necessario sostituire SQLite con un database Cloud (es. Supabase/Postgres) aggiornando la `DATABASE_URL` nel file `.env`.
+### 2. Auto-Debug (Deep DOM Fallback)
+Se il motore standard non trova azioni valide, scatta la fase di **Deep Debug**:
+- L'IA analizza i blocchi di contenuto (Pricing Cards, Sezioni) invece dei singoli bottoni.
+- Identifica il blocco più pertinente e forza il click sul bottone principale all'interno di quel blocco.
 
-## ⚙️ Comandi Utili
-- `npm run dev`: Avvia il server di sviluppo.
-- `npx prisma studio`: Apre l'interfaccia grafica per gestire il database.
-- `npx prisma migrate dev`: Applica modifiche allo schema del database.
+### 3. Gestione Moduli v8.6 (Novità)
+- **Login Proattivo**: L'IA rileva campi di input (Email/Password) in tempo reale. Se serve un account per procedere, si ferma e chiede i dati all'utente.
+- **Supporto Step-by-Step**: Gestisce login divisi su più pagine (es. prima Email, poi Password) premendo automaticamente "Next" o "Continua".
+- **Dati di Pagamento**: Rileva campi per carte di credito durante il checkout.
+
+### 4. Analisi Semantica v9.1 (Novità)
+- **Comando `analizza [query]`**: Ricerca intelligente di elementi (es. `analizza telefono`).
+- **Persistence & Auto-Refresh**: Dopo aver selezionato un numero, l'agente aggiorna **automaticamente** la lista dei risultati in tempo reale, mantenendo la stessa query di ricerca.
+- **Cache Invalidation**: Ogni analisi forza una scansione fresca del DOM per garantire che i dati riflettano sempre lo stato più recente della pagina.
+- **Ordinamento per Rilevanza**: I risultati sono pesati in base all'intento semantico e ai sinonimi (es. `telefono` -> `phone`, `mobile`).
+
+### 5. Apprendimento (Self-Learning)
+L'agente salva i successi e i fallimenti nel file `memory.json`.
+- **Successo**: Rafforza l'associazione tra obiettivo e testo del bottone.
+- **Fallimento**: Genera un report in `ai_fail_report.json` con lo storico delle azioni.
+
+## 📂 Struttura File
+- `web_explorer.ts`: Cuore pulsante dell'IA.
+- `memory.json`: Database della conoscenza acquisita.
+- `README.md`: Documentazione tecnica (questa guida).
+- `start_agent.bat`: Script di installazione e avvio completo.
+- `avvio_rapido.bat`: Lancio immediato (URL di Trae predefinito).
+
+## 🚀 Avvio
+1. Esegui `start_agent.bat` per la prima volta.
+2. All'avvio, puoi premere **INVIO** per andare subito su `https://www.trae.ai/`.
 
 ---
-*Documentazione generata per futuri sviluppatori o assistenti AI.*
+*Creato per essere intelligente, variabile e pronto a tutto.*
